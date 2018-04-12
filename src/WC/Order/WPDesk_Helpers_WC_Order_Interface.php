@@ -4,7 +4,6 @@
  * Interface for Order as is in the latest WC 3.x version
  */
 interface WPDesk_Helpers_WC_Order_Interface {
-
 	/**
 	 * Save data to the database.
 	 *

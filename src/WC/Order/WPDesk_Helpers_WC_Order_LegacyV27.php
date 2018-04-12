@@ -1,11 +1,8 @@
 <?php
 
-class WPDesk_Helpers_WC_Order_LegacyV27 implements WPDesk_Helpers_WC_Order_Interface {
+class WPDesk_Helpers_WC_Order_LegacyV27 extends WPDesk_Helpers_WC_Order_Decorator_Abstract implements WPDesk_Helpers_WC_Order_Interface {
 
 	const META_NAME_BILLING_FIRST_NAME = '_billing_first_name';
-
-	/** @var WC_Order */
-	private $order;
 
 	/** @var int */
 	private $order_id;
@@ -14,7 +11,7 @@ class WPDesk_Helpers_WC_Order_LegacyV27 implements WPDesk_Helpers_WC_Order_Inter
 	private $meta_data;
 
 	public function __construct( WC_Order $order ) {
-		$this->order    = $order;
+		parent::__construct($order);
 		$this->order_id = $order->id;
 	}
 
