@@ -977,4 +977,12 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 * @return array
 	 */
 	public function get_order_item_totals( $tax_display = '' );
+
+	/**
+	 * Returns the unique ID for this object.
+	 *
+	 * @since  2.6.0
+	 * @return int
+	 */
+	public function get_id();
 }
