@@ -445,30 +445,4 @@ class WPDesk_Helpers_WC_Order_Latest extends WPDesk_Helpers_WC_Order_Decorator_A
 	public function get_id() {
 		return $this->order->get_id();
 	}
-
-	public function getKey() {
-		// TODO: Implement getKey() method.
-	}
-
-	public function get() {
-		// TODO: Implement get() method.
-	}
-
-	public function isHit() {
-		// TODO: Implement isHit() method.
-	}
-
-	public function set( $value ) {
-		// TODO: Implement set() method.
-	}
-
-	public function expiresAt( $expiration ) {
-		// TODO: Implement expiresAt() method.
-	}
-
-	public function expiresAfter( $time ) {
-		// TODO: Implement expiresAfter() method.
-	}
-
-
 }
