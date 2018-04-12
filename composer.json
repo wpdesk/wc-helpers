@@ -1,0 +1,16 @@
+{
+    "name": "wpdesk/woocommerce_helpers",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Krzysztof Dyszczyk",
+            "email": "krzysiek@wpdesk.pl"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    },
+    "autoload": {
+      "classmap": ["src/"]
+    }
+}
