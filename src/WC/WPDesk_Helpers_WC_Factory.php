@@ -1,6 +1,6 @@
 <?php
 
-class WPDesk_Helpers_WC_Factory {
+class WPDesk_Helpers_WC_Factory implements WPDesk_Helpers_WC_Factory_Interface {
 	/**
 	 * @param WC_Order $order
 	 * @param $version
