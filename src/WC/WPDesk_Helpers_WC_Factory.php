@@ -11,7 +11,7 @@ class WPDesk_Helpers_WC_Factory {
 		if ( version_compare( $version, '2.7', '<' ) ) {
 			return new WPDesk_Helpers_WC_Order_LegacyV27( $order );
 		} else {
-			return new WPDesk_Helpers_WC_Order_Latest( $order->get_id() );
+			return new WPDesk_Helpers_WC_Order_Latest( $order );
 		}
 	}
 }

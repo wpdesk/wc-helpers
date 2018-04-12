@@ -2,6 +2,8 @@
 
 class WPDesk_Helpers_WC_Order_LegacyV27 implements WPDesk_Helpers_WC_Order_Interface {
 
+	const META_NAME_BILLING_FIRST_NAME = '_billing_first_name';
+
 	/** @var WC_Order */
 	private $order;
 
@@ -58,6 +60,14 @@ class WPDesk_Helpers_WC_Order_LegacyV27 implements WPDesk_Helpers_WC_Order_Inter
 	}
 
 	/**
+	 * @param $name
+	 * @param $value
+	 */
+	private function set_order_meta( $name, $value ) {
+		$this->meta_data[ $name ] = $value;
+	}
+
+	/**
 	 * Set billing first name.
 	 *
 	 * @param string $value Billing first name.
@@ -65,7 +75,7 @@ class WPDesk_Helpers_WC_Order_LegacyV27 implements WPDesk_Helpers_WC_Order_Inter
 	 * @throws WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_first_name( $value ) {
-		$this->meta_data[ self::META_NAME_BILLING_FIRST_NAME ] = $value;
+		$this->set_order_meta( self::META_NAME_BILLING_FIRST_NAME, $value );
 	}
 
 

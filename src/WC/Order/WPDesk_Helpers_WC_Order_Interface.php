@@ -4,34 +4,6 @@
  * Interface for Order as is in the latest WC 3.x version
  */
 interface WPDesk_Helpers_WC_Order_Interface {
-	const META_NAME_BILLING_FIRST_NAME = '_billing_first_name';
-
-	/**
-	 * When a payment is complete this function is called.
-	 *
-	 * Most of the time this should mark an order as 'processing' so that admin can process/post the items.
-	 * If the cart contains only downloadable items then the order is 'completed' since the admin needs to take no action.
-	 * Stock levels are reduced at this point.
-	 * Sales are also recorded for products.
-	 * Finally, record the date of payment.
-	 *
-	 * Order must exist.
-	 *
-	 * @param string $transaction_id Optional transaction id to store in post meta.
-	 *
-	 * @return bool success
-	 */
-	public function payment_complete( $transaction_id = '' );
-
-	/**
-	 * Gets order total - formatted for display.
-	 *
-	 * @param string $tax_display Type of tax display.
-	 * @param bool $display_refunded If should include refunded value.
-	 *
-	 * @return string
-	 */
-	public function get_formatted_order_total( $tax_display = '', $display_refunded = true );
 
 	/**
 	 * Save data to the database.
@@ -55,21 +27,6 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	public function set_status( $new_status, $note = '', $manual_update = false );
 
 	/**
-	 * Maybe set date paid.
-	 *
-	 * Sets the date paid variable when transitioning to the payment complete
-	 * order status. This is either processing or completed. This is not filtered
-	 * to avoid infinite loops e.g. if loading an order via the filter.
-	 *
-	 * Date paid is set once in this manner - only when it is not already set.
-	 * This ensures the data exists even if a gateway does not use the
-	 * `payment_complete` method.
-	 *
-	 * @since 3.0.0
-	 */
-	public function maybe_set_date_paid();
-
-	/**
 	 * Updates status of order immediately. Order must exist.
 	 *
 	 * @uses WPDeskHelpersWC_Order::set_status()
@@ -81,19 +38,6 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 * @return bool
 	 */
 	public function update_status( $new_status, $note = '', $manual = false );
-
-	/**
-	 * Get all class data in array format.
-	 *
-	 * @since 3.0.0
-	 * @return array
-	 */
-	public function get_data();
-
-	/**
-	 * Expands the shipping and billing information in the changes array.
-	 */
-	public function get_changes();
 
 	/**
 	 * Gets the order number for display (by default, order ID).
