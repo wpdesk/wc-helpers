@@ -2,13 +2,77 @@
 
 class WPDesk_Helpers_WC_Order_LegacyV27 extends WPDesk_Helpers_WC_Order_Decorator_Abstract implements WPDesk_Helpers_WC_Order_Interface {
 
-	const META_NAME_BILLING_FIRST_NAME = '_billing_first_name';
-
 	/** @var int */
 	private $order_id;
 
 	/** @var array */
 	private $meta_data;
+
+	const META_NAME_BILLING_FIRST_NAME = '_billing_first_name';
+
+	const META_NAME_BILLING_LAST_NAME = '_billing_last_name';
+
+	const META_NAME_BILLING_COMPANY = '_billing_company';
+
+	const META_NAME_BILLING_ADDRESS_1 = '_billing_address_1';
+
+	const META_NAME_BILLING_ADDRESS_2 = '_billing_address_2';
+
+	const META_NAME_BILLING_CITY = '_billing_city';
+
+	const META_NAME_BILLING_STATE = '_billing_state';
+
+	const META_NAME_BILLING_POSTCODE = '_billing_postcode';
+
+	const META_NAME_BILLING_COUNTRY = '_billing_country';
+
+	const META_NAME_BILLING_EMAIL = '_billing_email';
+
+	const META_NAME_BILLING_PHONE = '_billing_phone';
+
+	const META_NAME_SHIPPING_FIRST_NAME = '_shipping_first_name';
+
+	const META_NAME_SHIPPING_LAST_NAME = '_shipping_last_name';
+
+	const META_NAME_SHIPPING_COMPANY = '_shipping_company';
+
+	const META_NAME_SHIPPING_ADDRESS_1 = '_shipping_address_1';
+
+	const META_NAME_SHIPPING_ADDRESS_2 = '_shipping_address_2';
+
+	const META_NAME_SHIPPING_CITY = '_shipping_city';
+
+	const META_NAME_SHIPPING_STATE = '_shipping_state';
+
+	const META_NAME_SHIPPING_POSTCODE = '_shipping_postcode';
+
+	const META_NAME_SHIPPING_COUNTRY = '_shipping_country';
+
+	const META_NAME_PAYMENT_METHOD = '_payment_method';
+
+	const META_NAME_PAYMENT_METHOD_TITLE = '_payment_method_title';
+
+	const META_NAME_TRANSACTION_ID = '_transaction_id';
+
+	const META_NAME_CUSTOMER_IP_ADDRESS = '_customer_ip_address';
+
+	const META_NAME_CUSTOMER_USER_AGENT = '_customer_user_agent';
+
+	const META_NAME_CREATED_VIA = '_created_via';
+
+	const META_NAME_CUSTOMER_NOTE = '_customer_note';
+
+	const META_NAME_DATE_COMPLETED = '_date_completed';
+
+	const META_NAME_DATE_PAID = '_date_paid';
+
+	const META_NAME_CART_HASH = '_cart_hash';
+
+	const META_NAME_ORDER_KEY = '_order_key';
+
+	const META_NAME_CUSTOMER_ID = '_customer_id';
+
+	const META_NAME_USER_ID = '_user_id';
 
 	public function __construct( WC_Order $order ) {
 		parent::__construct($order);
@@ -66,145 +130,139 @@ class WPDesk_Helpers_WC_Order_LegacyV27 extends WPDesk_Helpers_WC_Order_Decorato
 	}
 
 	public function get_order_key( $context = 'view' ) {
-		return $this->order->get_order_key( $context );
+		return $this->get_order_meta( self::META_NAME_ORDER_KEY, true);
 	}
 
 	public function get_customer_id( $context = 'view' ) {
-		return $this->order->get_customer_id( $context );
+		return $this->get_order_meta( self::META_NAME_CUSTOMER_ID, true);
 	}
 
 	public function get_user_id( $context = 'view' ) {
-		return $this->order->get_user_id( $context );
+		return $this->get_order_meta( self::META_NAME_USER_ID, true);
 	}
 
 	public function get_user() {
 		return $this->order->get_user();
 	}
-	/**
-	 * Get billing first name.
-	 *
-	 * @param  string $context What the value is for. Valid values are view and edit.
-	 *
-	 * @return string
-	 */
+
 	public function get_billing_first_name( $context = 'view' ) {
 		return $this->get_order_meta( self::META_NAME_BILLING_FIRST_NAME, true );
 	}
 
 	public function get_billing_last_name( $context = 'view' ) {
-		return $this->order->get_billing_last_name( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_LAST_NAME, true);
 	}
 
 	public function get_billing_company( $context = 'view' ) {
-		return $this->order->get_billing_company( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_COMPANY, true);
 	}
 
 	public function get_billing_address_1( $context = 'view' ) {
-		return $this->order->get_billing_address_1( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_ADDRESS_1, true);
 	}
 
 	public function get_billing_address_2( $context = 'view' ) {
-		return $this->order->get_billing_address_2( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_ADDRESS_2, true);
 	}
 
 	public function get_billing_city( $context = 'view' ) {
-		return $this->order->get_billing_city( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_CITY, true);
 	}
 
 	public function get_billing_state( $context = 'view' ) {
-		return $this->order->get_billing_state( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_STATE, true);
 	}
 
 	public function get_billing_postcode( $context = 'view' ) {
-		return $this->order->get_billing_postcode( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_POSTCODE, true);
 	}
 
 	public function get_billing_country( $context = 'view' ) {
-		return $this->order->get_billing_country( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_COUNTRY, true);
 	}
 
 	public function get_billing_email( $context = 'view' ) {
-		return $this->order->get_billing_email( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_EMAIL, true);
 	}
 
 	public function get_billing_phone( $context = 'view' ) {
-		return $this->order->get_billing_phone( $context );
+		return $this->get_order_meta( self::META_NAME_BILLING_PHONE, true);
 	}
 
 	public function get_shipping_first_name( $context = 'view' ) {
-		return $this->order->get_shipping_first_name( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_FIRST_NAME, true);
 	}
 
 	public function get_shipping_last_name( $context = 'view' ) {
-		return $this->order->get_shipping_last_name( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_LAST_NAME, true);
 	}
 
 	public function get_shipping_company( $context = 'view' ) {
-		return $this->order->get_shipping_company( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_COMPANY, true);
 	}
 
 	public function get_shipping_address_1( $context = 'view' ) {
-		return $this->order->get_shipping_address_1( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_ADDRESS_1, true);
 	}
 
 	public function get_shipping_address_2( $context = 'view' ) {
-		return $this->order->get_shipping_address_2( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_ADDRESS_2, true);
 	}
 
 	public function get_shipping_city( $context = 'view' ) {
-		return $this->order->get_shipping_city( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_CITY, true);
 	}
 
 	public function get_shipping_state( $context = 'view' ) {
-		return $this->order->get_shipping_state( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_STATE, true);
 	}
 
 	public function get_shipping_postcode( $context = 'view' ) {
-		return $this->order->get_shipping_postcode( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_POSTCODE, true);
 	}
 
 	public function get_shipping_country( $context = 'view' ) {
-		return $this->order->get_shipping_country( $context );
+		return $this->get_order_meta( self::META_NAME_SHIPPING_COUNTRY, true);
 	}
 
 	public function get_payment_method( $context = 'view' ) {
-		return $this->order->get_payment_method( $context );
+		return $this->get_order_meta( self::META_NAME_PAYMENT_METHOD, true);
 	}
 
 	public function get_payment_method_title( $context = 'view' ) {
-		return $this->order->get_payment_method_title( $context );
+		return $this->get_order_meta( self::META_NAME_PAYMENT_METHOD_TITLE, true);
 	}
 
 	public function get_transaction_id( $context = 'view' ) {
-		return $this->order->get_transaction_id( $context );
+		return $this->get_order_meta( self::META_NAME_TRANSACTION_ID, true);
 	}
 
 	public function get_customer_ip_address( $context = 'view' ) {
-		return $this->order->get_customer_ip_address( $context );
+		return $this->get_order_meta( self::META_NAME_CUSTOMER_IP_ADDRESS, true);
 	}
 
 	public function get_customer_user_agent( $context = 'view' ) {
-		return $this->order->get_customer_user_agent( $context );
+		return $this->get_order_meta( self::META_NAME_CUSTOMER_USER_AGENT, true);
 	}
 
 	public function get_created_via( $context = 'view' ) {
-		return $this->order->get_created_via( $context );
+		return $this->get_order_meta( self::META_NAME_CREATED_VIA, true);
 	}
 
 	public function get_customer_note( $context = 'view' ) {
-		return $this->order->get_customer_note( $context );
+		return $this->get_order_meta( self::META_NAME_CUSTOMER_NOTE, true);
 	}
 
 	public function get_date_completed( $context = 'view' ) {
-		return $this->order->get_date_completed( $context );
+		return $this->get_order_meta( self::META_NAME_DATE_COMPLETED, true);
 	}
 
 	public function get_date_paid( $context = 'view' ) {
-		return $this->order->get_date_paid( $context );
+		return $this->get_order_meta( self::META_NAME_DATE_PAID, true);
 	}
 
 	public function get_cart_hash( $context = 'view' ) {
-		return $this->order->get_cart_hash( $context );
+		return $this->get_order_meta( self::META_NAME_CART_HASH, true);
 	}
 
 	public function get_address( $type = 'billing' ) {
@@ -246,13 +304,7 @@ class WPDesk_Helpers_WC_Order_LegacyV27 extends WPDesk_Helpers_WC_Order_Decorato
 	public function set_customer_id( $value ) {
 		return $this->order->set_customer_id( $value );
 	}
-	/**
-	 * Set billing first name.
-	 *
-	 * @param string $value Billing first name.
-	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
-	 */
+
 	public function set_billing_first_name( $value ) {
 		$this->set_order_meta( self::META_NAME_BILLING_FIRST_NAME, $value );
 	}
