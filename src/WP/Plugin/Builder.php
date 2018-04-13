@@ -27,7 +27,7 @@ class Builder implements SupportsAutoloading
     }
 
     /**
-     * Builds instance if needed and ensures there is only one instance.
+     * Returns instance if it were built
      *
      * @return AbstractPlugin
      */
@@ -54,7 +54,7 @@ class Builder implements SupportsAutoloading
     }
 
     /**
-     * Builds instance of plugin. If called more than once then more than one instance is created.
+     * Builds instance of plugin
      *
      * @return AbstractPlugin
      */
@@ -62,9 +62,8 @@ class Builder implements SupportsAutoloading
     {
         $class_name = apply_filters(self::HOOK_PLUGIN_CLASS, $this->class);
 
-        $plugin_dir = dirname(dirname(__FILE__));
-        $plugin_file = trailingslashit($plugin_dir) . basename($plugin_dir) . self::PHP_EXTENSION;
-
-        return new $class_name($plugin_file, $this->plugin_core_info);
+        $plugin = new $class_name($this->plugin_core_info['plugin_dir'], $this->plugin_core_info);
+        self::$instances[$this->class] = $plugin;
+        return $plugin;
     }
 }

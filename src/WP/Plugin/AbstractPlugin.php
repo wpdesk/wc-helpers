@@ -8,9 +8,6 @@ namespace WPDesk\WP\Plugin;
  *
  */
 class AbstractPlugin {
-
-    const VERSION = '1.10';
-
     /** @var bool  */
     protected $plugin_is_active = true;
 
