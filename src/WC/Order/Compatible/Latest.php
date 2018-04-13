@@ -1,6 +1,10 @@
 <?php
 
-class WPDesk_Helpers_WC_Order_Latest extends WPDesk_Helpers_WC_Order_Decorator_Abstract implements WPDesk_Helpers_WC_Order_Interface {
+namespace WPDesk\Compatibility\Helper\WC\Order\Compatible;
+
+use WPDesk\Compatibility\Helper\WC\Order\Compatible;
+
+class Latest extends AbstractWrapper implements Compatible {
 
 	public function save() {
 		return $this->order->save();

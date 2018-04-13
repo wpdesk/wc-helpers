@@ -1,9 +1,11 @@
 <?php
 
+namespace WPDesk\Compatibility\Helper\WC\Order;
+
 /**
  * Interface for Order as is in the latest WC 3.x version
  */
-interface WPDesk_Helpers_WC_Order_Interface {
+interface Compatible {
 	/**
 	 * Save data to the database.
 	 *
@@ -77,7 +79,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	/**
 	 * Get the user associated with the order. False for guests.
 	 *
-	 * @return WP_User|false
+	 * @return \WP_User|false
 	 */
 	public function get_user();
 
@@ -329,7 +331,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param  string $context What the value is for. Valid values are view and edit.
 	 *
-	 * @return WC_DateTime|NULL object if the date is set or null if there is no date.
+	 * @return \WC_DateTime|NULL object if the date is set or null if there is no date.
 	 */
 	public function get_date_completed( $context = 'view' );
 
@@ -338,7 +340,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param  string $context What the value is for. Valid values are view and edit.
 	 *
-	 * @return WC_DateTime|NULL object if the date is set or null if there is no date.
+	 * @return \WC_DateTime|NULL object if the date is set or null if there is no date.
 	 */
 	public function get_date_paid( $context = 'view' );
 
@@ -423,7 +425,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Max length 22 chars.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_order_key( $value );
 
@@ -432,7 +434,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param int $value Customer ID.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_customer_id( $value );
 
@@ -441,7 +443,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing first name.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_first_name( $value );
 
@@ -450,7 +452,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing last name.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_last_name( $value );
 
@@ -459,7 +461,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing company.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_company( $value );
 
@@ -468,7 +470,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing address line 1.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_address_1( $value );
 
@@ -477,7 +479,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing address line 2.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_address_2( $value );
 
@@ -486,7 +488,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing city.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_city( $value );
 
@@ -495,7 +497,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing state.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_state( $value );
 
@@ -504,7 +506,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing postcode.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_postcode( $value );
 
@@ -513,7 +515,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing country.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_country( $value );
 
@@ -522,7 +524,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing email.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_email( $value );
 
@@ -531,7 +533,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Billing phone.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_billing_phone( $value );
 
@@ -540,7 +542,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping first name.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_first_name( $value );
 
@@ -549,7 +551,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping last name.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_last_name( $value );
 
@@ -558,7 +560,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping company.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_company( $value );
 
@@ -567,7 +569,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping address line 1.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_address_1( $value );
 
@@ -576,7 +578,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping address line 2.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_address_2( $value );
 
@@ -585,7 +587,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping city.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_city( $value );
 
@@ -594,7 +596,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping state.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_state( $value );
 
@@ -603,7 +605,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping postcode.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_postcode( $value );
 
@@ -612,7 +614,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Shipping country.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_shipping_country( $value );
 
@@ -621,7 +623,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $payment_method Supports WC_Payment_Gateway for bw compatibility with < 3.0.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_payment_method( $payment_method = '' );
 
@@ -630,7 +632,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Payment method title.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_payment_method_title( $value );
 
@@ -639,7 +641,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Transaction id.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_transaction_id( $value );
 
@@ -648,7 +650,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Customer ip address.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_customer_ip_address( $value );
 
@@ -657,7 +659,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Customer user agent.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_customer_user_agent( $value );
 
@@ -666,7 +668,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Created via.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_created_via( $value );
 
@@ -675,7 +677,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Customer note.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_customer_note( $value );
 
@@ -684,7 +686,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param  string|integer|null $date UTC timestamp, or ISO 8601 DateTime. If the DateTime string has no timezone or offset, WordPress site timezone will be assumed. Null if their is no date.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_date_completed( $date = null );
 
@@ -693,7 +695,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param  string|integer|null $date UTC timestamp, or ISO 8601 DateTime. If the DateTime string has no timezone or offset, WordPress site timezone will be assumed. Null if their is no date.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_date_paid( $date = null );
 
@@ -702,7 +704,7 @@ interface WPDesk_Helpers_WC_Order_Interface {
 	 *
 	 * @param string $value Cart hash.
 	 *
-	 * @throws WC_Data_Exception Throws exception when invalid data is found.
+	 * @throws \WC_Data_Exception Throws exception when invalid data is found.
 	 */
 	public function set_cart_hash( $value );
 
