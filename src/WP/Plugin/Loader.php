@@ -5,13 +5,23 @@ namespace WPDesk\WP\Plugin;
 class Loader
 {
     private static $loadables = [];
+    private static $load_hook_added = false;
 
-    /**
-     * @param SupportsAutoloading $loadable
-     */
+    const LOADER_PRIORITY = 80;
+    const HOOK_TO_LOAD_LOADERS = 'plugins_loaded';
+
     public function register_plugin(SupportsAutoloading $loadable)
     {
-        self::$loadables[] = [ 'object' => $loadable, 'loaded' => false ];
+        self::$loadables[] = ['object' => $loadable, 'loaded' => false];
+        $this->register_load_hook_if_needed();
+    }
+
+    private function register_load_hook_if_needed()
+    {
+        if (!self::$load_hook_added) {
+            self::$load_hook_added = add_action(self::HOOK_TO_LOAD_LOADERS, [$this, 'load_autoloaders'], 1,
+                self::LOADER_PRIORITY);
+        }
     }
 
     private function sortLoadables()
