@@ -4,23 +4,52 @@ namespace WPDesk\WP\Plugin;
 
 class Loader
 {
+    const LOADER_PRIORITY = 80;
+    const HOOK_TO_LOAD_LOADERS = 'plugins_loaded';
+    const LOADABLE_KEY_OBJECT = 'object';
+    const LOADABLE_KEY_BUILT = 'built';
+    const LOADABLE_KEY_LOADED = 'loaded';
+
     private static $loadables = [];
     private static $load_hook_added = false;
 
-    const LOADER_PRIORITY = 80;
-    const HOOK_TO_LOAD_LOADERS = 'plugins_loaded';
-
     public function register_plugin(SupportsAutoloading $loadable)
     {
-        self::$loadables[] = ['object' => $loadable, 'loaded' => false];
+        self::$loadables[] = [
+            self::LOADABLE_KEY_OBJECT => $loadable,
+            self::LOADABLE_KEY_LOADED => false,
+            self::LOADABLE_KEY_BUILT => false
+        ];
         $this->register_load_hook_if_needed();
     }
 
     private function register_load_hook_if_needed()
     {
         if (!self::$load_hook_added) {
-            self::$load_hook_added = add_action(self::HOOK_TO_LOAD_LOADERS, [$this, 'load_autoloaders'], 1,
+            self::$load_hook_added = add_action(self::HOOK_TO_LOAD_LOADERS, [$this, 'load_build_all'], 1,
                 self::LOADER_PRIORITY);
+        }
+    }
+
+    public function load_build_all()
+    {
+        $this->loadPlugins();
+        $this->buildPlugins();
+    }
+
+    private function loadPlugins()
+    {
+        $this->sortLoadables();
+        foreach (self::$loadables as $loadable) {
+            if (!$loadable[self::LOADABLE_KEY_LOADED]) {
+                /** @var SupportsAutoloading $object */
+                $object = $loadable[self::LOADABLE_KEY_OBJECT];
+
+                /** @var SupportsAutoloading $loadable */
+                require_once($object->get_autoload_file());
+
+                $loadable[self::LOADABLE_KEY_LOADED] = true;
+            }
         }
     }
 
@@ -28,26 +57,26 @@ class Loader
     {
         usort(self::$loadables, function ($a, $b) {
             /** @var SupportsAutoloading $objectA */
-            $objectA = $a['object'];
+            $objectA = $a[self::LOADABLE_KEY_OBJECT];
             /** @var SupportsAutoloading $objectB */
-            $objectB = $b['object'];
+            $objectB = $b[self::LOADABLE_KEY_OBJECT];
 
             return $objectA->get_release_date()->getTimestamp() - $objectB->get_release_date()->getTimestamp();
         });
     }
 
-    public function load_autoloaders()
+    private function buildPlugins()
     {
         $this->sortLoadables();
         foreach (self::$loadables as $loadable) {
-            if (!$loadable['loaded']) {
+            if (!$loadable[self::LOADABLE_KEY_BUILT]) {
                 /** @var SupportsAutoloading $object */
-                $object = $loadable['object'];
+                $object = $loadable[self::LOADABLE_KEY_OBJECT];
 
                 /** @var SupportsAutoloading $loadable */
-                require_once($object->get_autoload_file());
+                $object->build_plugin();
 
-                $loadable['loaded'] = true;
+                $loadable[self::LOADABLE_KEY_BUILT] = true;
             }
         }
     }
