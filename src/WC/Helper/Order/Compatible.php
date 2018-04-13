@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\Compatibility\Helper\WC\Order;
+namespace WPDesk\WC\Helper\Order;
 
 /**
  * Interface for Order as is in the latest WC 3.x version

@@ -14,8 +14,8 @@
     },
     "autoload": {
         "psr-4": {
-            "WPDesk\\Compatibility\\Helper\\WC\\": "src/WC/",
-            "WPDesk\\Compatibility\\Helper\\WP\\": "src/WP/"
+            "WPDesk\\WC\\": "src/WC/",
+            "WPDesk\\WP\\": "src/WP/"
         }
     },
     "require-dev": {

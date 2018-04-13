@@ -1,8 +1,8 @@
 <?php
 
-namespace WPDesk\Compatibility\Helper\WC\Order\Compatible;
+namespace WPDesk\WC\Helper\Order\Compatible;
 
-use WPDesk\Compatibility\Helper\WC\Order\Compatible;
+use WPDesk\WC\Helper\Order\Compatible;
 
 class Latest extends AbstractWrapper implements Compatible {
 

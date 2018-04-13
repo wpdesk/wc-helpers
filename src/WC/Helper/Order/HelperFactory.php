@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\Compatibility\Helper\WC\Order;
+namespace WPDesk\WC\Helper\Order;
 
 interface HelperFactory {
 	/**

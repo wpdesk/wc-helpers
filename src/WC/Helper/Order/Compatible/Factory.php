@@ -1,14 +1,14 @@
 <?php
 
-namespace WPDesk\Compatibility\Helper\WC\Order\Compatible;
+namespace WPDesk\WC\Helper\Order\Compatible;
 
-use WPDesk\Compatibility\Helper\WC\Order\Compatible;
+use WPDesk\WC\Helper\Order\Compatible;
 
 /**
  * Class WPDesk_Helpers_WC_Factory
  * @deprecated
  */
-class Factory implements \WPDesk\Compatibility\Helper\WC\Order\HelperFactory
+class Factory implements \WPDesk\WC\Helper\Order\HelperFactory
 {
     /**
      * @param \WC_Order $order
