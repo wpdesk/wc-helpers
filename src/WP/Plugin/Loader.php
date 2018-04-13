@@ -5,7 +5,11 @@ namespace WPDesk\WP\Plugin;
 class Loader
 {
     const LOADER_PRIORITY = 80;
+
     const HOOK_TO_LOAD_LOADERS = 'plugins_loaded';
+    const HOOK_AUTOLOADERS_LOADED = 'autoloaders_loaded';
+    const HOOK_PLUGINS_BUILT = 'plugins_built';
+
     const LOADABLE_KEY_OBJECT = 'object';
     const LOADABLE_KEY_BUILT = 'built';
     const LOADABLE_KEY_LOADED = 'loaded';
@@ -33,11 +37,11 @@ class Loader
 
     public function load_build_all()
     {
-        $this->loadPlugins();
+        $this->loadAutoloaders();
         $this->buildPlugins();
     }
 
-    private function loadPlugins()
+    private function loadAutoloaders()
     {
         $this->sortLoadables();
         foreach (self::$loadables as $loadable) {
@@ -51,6 +55,7 @@ class Loader
                 $loadable[self::LOADABLE_KEY_LOADED] = true;
             }
         }
+        do_action(self::HOOK_AUTOLOADERS_LOADED);
     }
 
     private function sortLoadables()
@@ -79,5 +84,6 @@ class Loader
                 $loadable[self::LOADABLE_KEY_BUILT] = true;
             }
         }
+        do_action(self::HOOK_PLUGINS_BUILT);
     }
 }
