@@ -32,8 +32,8 @@ class WPDesk_Requirement_Checker {
     /** @var array */
     private $notices;
 
-    /** @var array */
-    private $plugin_core_info;
+    /** @var WPDesk_PluginInfo */
+    private $plugin_info;
 
     /**
      * @param $plugin_file
@@ -56,10 +56,10 @@ class WPDesk_Requirement_Checker {
 
     /**
      * Should be used when you want to check if others plugin are loaded (WC for example)
-     * @param array $plugin_core_info
+     * @param WPDesk_PluginInfo $plugin_info
      */
-    public function check_requirements_and_load_plugin_deferred($plugin_core_info) {
-        $this->plugin_core_info = $plugin_data;
+    public function check_requirements_and_load_plugin_deferred($plugin_info) {
+        $this->plugin_info = $plugin_info;
         add_action( "plugins_loaded", array( $this, "check_requirements_and_load_plugin" ) );
     }
 
@@ -68,7 +68,8 @@ class WPDesk_Requirement_Checker {
      */
     public function check_requirements_and_load_plugin() {
         if ( $this->is_requirements_met() ) {
-            $plugin_core_info = $this->plugin_core_info;
+	        /** @noinspection PhpUnusedLocalVariableInspection */
+	        $plugin_info = $this->plugin_info;
             require_once plugin_dir_path( $this->plugin_file ) . DIRECTORY_SEPARATOR . 'bootstrap.php';
         } else {
             $this->disable_plugin_render_notice();
