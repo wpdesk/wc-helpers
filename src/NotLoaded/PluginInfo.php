@@ -28,5 +28,5 @@ class WPDesk_PluginInfo
     public $release_date;
 
     /** @var string */
-    public $composer;
+    public $autoloader;
 }

@@ -14,8 +14,8 @@ class PluginLoader
     const LOADABLE_KEY_BUILT = 'built';
     const LOADABLE_KEY_LOADED = 'loaded';
 
-    private static $loadables = [];
-    private static $load_hook_added = false;
+    protected static $loadables = [];
+	protected static $load_hook_added = false;
 
     public function register_plugin(SupportsAutoloading $loadable)
     {
@@ -27,12 +27,39 @@ class PluginLoader
         $this->register_load_hook_if_needed();
     }
 
-    private function register_load_hook_if_needed()
+	public function register_load_hook_if_needed()
     {
-        if (!self::$load_hook_added) {
-            self::$load_hook_added = add_action(self::HOOK_TO_LOAD_LOADERS, [$this, 'load_build_all'], 1,
+        if (!static::$load_hook_added) {
+	        static::$load_hook_added = add_action(self::HOOK_TO_LOAD_LOADERS, [$this, 'load_build_all'], 1,
                 self::LOADER_PRIORITY);
         }
+    }
+
+    public function disable_loader_hook_permanently() {
+		$this->remove_action_by_class(self::HOOK_TO_LOAD_LOADERS, [self::class => 'load_build_all'], self::LOADER_PRIORITY);
+    }
+
+	/**
+	 * Remove action by class name
+	 *
+	 * @param string $hook_name
+	 * @param array $class_and_function_list
+	 * @param int $priority
+	 * @see https://gist.github.com/scarstens/87cfdf482a2e6b412d84
+	 */
+    private function remove_action_by_class($hook_name, $class_and_function_list, $priority = 10) {
+	    global $wp_filter;
+	    // go through manually created class and function list
+	    foreach($class_and_function_list as $class_search => $function_search){
+		    //limit removals to matching action names (wildcard string matching)
+		    foreach($wp_filter[$hook_name][$priority] as $instance => $action){
+			    //limit removals again to matching class and function names (wildcard string matching)
+			    if( stristr($instance,$function_search) && stristr(get_class($action['function'][0]),$class_search) ) {
+				    //action found, removing action from filters
+				    unset($wp_filter[$hook_name][10][$instance]);
+			    }
+		    }
+	    }
     }
 
     public function load_build_all()
@@ -44,7 +71,7 @@ class PluginLoader
     private function loadAutoloaders()
     {
         $this->sortLoadables();
-        foreach (self::$loadables as $loadable) {
+        foreach (static::$loadables as $loadable) {
             if (!$loadable[self::LOADABLE_KEY_LOADED]) {
                 /** @var SupportsAutoloading $object */
                 $object = $loadable[self::LOADABLE_KEY_OBJECT];
@@ -60,7 +87,7 @@ class PluginLoader
 
     private function sortLoadables()
     {
-        usort(self::$loadables, function ($a, $b) {
+        usort(static::$loadables, function ($a, $b) {
             /** @var SupportsAutoloading $objectA */
             $objectA = $a[self::LOADABLE_KEY_OBJECT];
             /** @var SupportsAutoloading $objectB */
