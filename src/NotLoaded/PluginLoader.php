@@ -1,8 +1,8 @@
 <?php
 
-namespace WPDesk\WP\Plugin;
+namespace WPDesk;
 
-class Loader
+class PluginLoader
 {
     const LOADER_PRIORITY = 80;
 

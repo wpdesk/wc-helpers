@@ -1,8 +1,8 @@
 <?php
 
-namespace WPDesk\WP\Plugin;
+namespace WPDesk;
 
-class Builder implements SupportsAutoloading
+class PluginBuilder implements SupportsAutoloading
 {
     const PHP_EXTENSION = '.php';
     const HOOK_PLUGIN_CLASS = 'wpdesk_plugin_class';
@@ -29,7 +29,7 @@ class Builder implements SupportsAutoloading
     /**
      * Returns instance if it were built
      *
-     * @return AbstractPlugin
+     * @return \WPDesk\WP\Plugin\AbstractPlugin
      */
     public static function get_plugin_instance($class)
     {
@@ -56,7 +56,7 @@ class Builder implements SupportsAutoloading
     /**
      * Builds instance of plugin
      *
-     * @return AbstractPlugin
+     * @return \WPDesk\WP\Plugin\AbstractPlugin
      */
     public function build_plugin()
     {

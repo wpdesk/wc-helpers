@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\WP\Plugin;
+namespace WPDesk;
 
 interface SupportsAutoloading {
 
@@ -10,6 +10,6 @@ interface SupportsAutoloading {
     /** @return \SplFileInfo */
     public function get_autoload_file();
 
-    /** @return AbstractPlugin */
+    /** @return \WPDesk\WP\Plugin\AbstractPlugin */
     public function build_plugin();
 }
