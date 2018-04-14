@@ -28,6 +28,7 @@ class PluginBuilder implements SupportsAutoloading
 
     /**
      * Returns instance if it were built
+     * @param string $class Plugin class name
      *
      * @return \WPDesk\WP\Plugin\AbstractPlugin
      */
