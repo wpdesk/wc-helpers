@@ -50,7 +50,7 @@ class Loader
                 $object = $loadable[self::LOADABLE_KEY_OBJECT];
 
                 /** @var SupportsAutoloading $loadable */
-                require_once($object->get_autoload_file());
+                require_once($object->get_autoload_file()->getPathname());
 
                 $loadable[self::LOADABLE_KEY_LOADED] = true;
             }

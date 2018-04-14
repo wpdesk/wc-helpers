@@ -7,7 +7,7 @@ interface SupportsAutoloading {
     /** @return \DateTimeInterface */
     public function get_release_date();
 
-    /** @return string */
+    /** @return \SplFileInfo */
     public function get_autoload_file();
 
     /** @return AbstractPlugin */
