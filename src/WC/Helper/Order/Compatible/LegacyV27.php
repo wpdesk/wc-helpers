@@ -54,7 +54,7 @@ class LegacyV27 extends AbstractWrapper implements OrderCompatible
     /** @var int */
     private $order_id;
     /** @var array */
-    private $meta_data;
+    private $meta_data = [];
 
     public function __construct(\WC_Order $order)
     {
