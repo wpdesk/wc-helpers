@@ -2,7 +2,7 @@
 
 namespace WPDesk\WC\Helper\Compatibility\Traits;
 
-trait PostMetaData
+trait PostMetaDataManagement
 {
     /** @var int */
     protected $post_id;
