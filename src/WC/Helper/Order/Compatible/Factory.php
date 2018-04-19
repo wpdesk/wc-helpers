@@ -2,7 +2,7 @@
 
 namespace WPDesk\WC\Helper\Order\Compatible;
 
-use WPDesk\WC\Helper\Order\Compatible;
+use WPDesk\WC\Helper\Order\OrderCompatible;
 
 /**
  * Class WPDesk_Helpers_WC_Factory
@@ -14,7 +14,7 @@ class Factory implements \WPDesk\WC\Helper\Order\HelperFactory
      * @param \WC_Order $order
      * @param $version
      *
-     * @return Compatible
+     * @return OrderCompatible
      */
     public function create_helper(\WC_Order $order, $version = WC_VERSION)
     {

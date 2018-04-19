@@ -2,9 +2,9 @@
 
 namespace WPDesk\WC\Helper\Order\Compatible;
 
-use WPDesk\WC\Helper\Order\Compatible;
+use WPDesk\WC\Helper\Order\OrderCompatible;
 
-class LegacyV27 extends AbstractWrapper implements Compatible
+class LegacyV27 extends AbstractWrapper implements OrderCompatible
 {
 
     /** @var int */
@@ -675,4 +675,81 @@ class LegacyV27 extends AbstractWrapper implements Compatible
     {
         return $this->order->get_id();
     }
+
+    public function get_parent_id($context = 'view')
+    {
+        // TODO: Implement get_parent_id() method.
+    }
+
+    public function get_status($context = 'view')
+    {
+        // TODO: Implement get_status() method.
+    }
+
+    public function get_version($context = 'view')
+    {
+        // TODO: Implement get_version() method.
+    }
+
+    public function get_prices_include_tax($context = 'view')
+    {
+        // TODO: Implement get_prices_include_tax() method.
+    }
+
+    public function get_date_modified($context = 'view')
+    {
+        // TODO: Implement get_date_modified() method.
+    }
+
+    public function get_discount_total($context = 'view')
+    {
+        // TODO: Implement get_discount_total() method.
+    }
+
+    public function get_discount_tax($context = 'view')
+    {
+        // TODO: Implement get_discount_tax() method.
+    }
+
+    public function get_shipping_total($context = 'view')
+    {
+        // TODO: Implement get_shipping_total() method.
+    }
+
+    public function get_shipping_tax($context = 'view')
+    {
+        // TODO: Implement get_shipping_tax() method.
+    }
+
+    public function get_cart_tax($context = 'view')
+    {
+        // TODO: Implement get_cart_tax() method.
+    }
+
+    public function get_total($context = 'view')
+    {
+        // TODO: Implement get_total() method.
+    }
+
+    public function get_total_tax($context = 'view')
+    {
+        // TODO: Implement get_total_tax() method.
+    }
+
+    public function get_currency($context = 'view')
+    {
+        // TODO: Implement get_currency() method.
+    }
+
+    public function get_item_meta_data($item_id)
+    {
+        // TODO: Implement get_item_meta_data() method.
+    }
+
+    public function reduce_order_stock()
+    {
+        // TODO: Implement reduce_order_stock() method.
+    }
+
+
 }
