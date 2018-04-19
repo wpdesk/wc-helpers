@@ -18,11 +18,11 @@ abstract class AbstractWrapper
     }
 
     /**
-     * @param $order
+     * @param \WC_Order $order
      *
      * @return int
      */
-    static function get_order_id($order)
+    static function get_order_id(\WC_Order $order)
     {
         return method_exists($order, 'get_id') ? $order->get_id() : $order->id;
     }
