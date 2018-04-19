@@ -2,12 +2,12 @@
 
 namespace WPDesk\WC\Helper\Order\Compatible;
 
-use WPDesk\WC\Helper\Compatibility\MetaDataTrait\MetaDataTrait;
+use WPDesk\WC\Helper\Compatibility\MetaDataTrait\PostMetaData;
 use WPDesk\WC\Helper\Order\OrderCompatible;
 
 class LegacyV27 extends AbstractWrapper implements OrderCompatible
 {
-    use MetaDataTrait;
+    use PostMetaData;
 
     const META_NAME_BILLING_FIRST_NAME = '_billing_first_name';
     const META_NAME_BILLING_LAST_NAME = '_billing_last_name';
