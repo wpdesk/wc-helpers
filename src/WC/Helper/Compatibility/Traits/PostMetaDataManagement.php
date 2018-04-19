@@ -31,7 +31,7 @@ trait PostMetaDataManagement
      *
      * @return mixed
      */
-    protected function get_post_meta($meta_key, $single = false)
+    public function get_post_meta($meta_key, $single = false)
     {
         if (isset($this->meta_data[$meta_key])) {
             return $this->meta_data[$meta_key];
@@ -44,7 +44,7 @@ trait PostMetaDataManagement
      * @param string $name
      * @param string $value
      */
-    protected function set_post_meta($meta_key, $value)
+    public function set_post_meta($meta_key, $value)
     {
         $this->meta_data[$meta_key] = $value;
         return true;
