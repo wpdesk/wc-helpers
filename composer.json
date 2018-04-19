@@ -1,5 +1,5 @@
 {
-    "name": "wpdesk/woocommerce_helpers",
+    "name": "wpdesk/wc_helpers",
     "description": "Library for developers who tries to develop WooCommerce plugins",
     "type": "library",
     "authors": [
