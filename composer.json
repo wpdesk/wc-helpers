@@ -15,7 +15,8 @@
     "autoload": {
         "psr-4": {
             "WPDesk\\WC\\": "src/WC/",
-            "WPDesk\\WP\\": "src/WP/"
+            "WPDesk\\WP\\": "src/WP/",
+            "WPDesk\\Cache\\": "src/Cache/"
         }
     },
     "require-dev": {

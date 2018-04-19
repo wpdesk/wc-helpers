@@ -1,5 +1,7 @@
 <?php
 
+namespace WPDesk\Cache;
+
 class StaticCache implements \Psr\SimpleCache\CacheInterface
 {
     /** @var array */
