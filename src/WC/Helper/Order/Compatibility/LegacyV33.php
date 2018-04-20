@@ -4,7 +4,7 @@ namespace WPDesk\WC\Helper\Order\Compatible;
 
 use WPDesk\WC\Helper\Order\OrderCompatible;
 
-class Latest extends AbstractWrapper implements OrderCompatible
+class LegacyV33 extends AbstractWrapper implements OrderCompatible
 {
     public function save()
     {
