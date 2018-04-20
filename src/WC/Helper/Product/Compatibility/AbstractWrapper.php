@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\WC\Helper\Product\Compatible;
+namespace WPDesk\WC\Helper\Product\Compatibility;
 
 abstract class AbstractWrapper
 {

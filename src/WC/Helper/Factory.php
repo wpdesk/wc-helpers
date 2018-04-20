@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\WC\Helper\Product\Compatible;
+namespace WPDesk\WC\Helper;
 
 use WPDesk\WC\Helper\Compatibility\HelperFactory;
 use WPDesk\WC\Helper\Compatibility\HelperFactoryLegacyV33;

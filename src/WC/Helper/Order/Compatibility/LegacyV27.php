@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\WC\Helper\Order\Compatible;
+namespace WPDesk\WC\Helper\Order\Compatibility;
 
 use WPDesk\WC\Helper\Compatibility\Traits\PostMetaDataManagement;
 use WPDesk\WC\Helper\Order\OrderCompatible;

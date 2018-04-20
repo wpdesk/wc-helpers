@@ -14,7 +14,7 @@ class HelperFactoryLegacyV33 implements HelperFactory
      */
     public function create_product_helper(\WC_Product $product)
     {
-        return new \WPDesk\WC\Helper\Product\Compatible\LegacyV33($product);
+        return new \WPDesk\WC\Helper\Product\Compatibility\LegacyV33($product);
     }
 
     /**
@@ -24,6 +24,6 @@ class HelperFactoryLegacyV33 implements HelperFactory
      */
     public function create_order_helper(\WC_Order $order)
     {
-        return new \WPDesk\WC\Helper\Order\Compatible\LegacyV33($order);
+        return new \WPDesk\WC\Helper\Order\Compatibility\LegacyV33($order);
     }
 }

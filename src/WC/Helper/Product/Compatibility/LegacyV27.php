@@ -1,6 +1,6 @@
 <?php
 
-namespace WPDesk\WC\Helper\Product\Compatible;
+namespace WPDesk\WC\Helper\Product\Compatibility;
 
 use WPDesk\WC\Helper\Compatibility\Traits\PostMetaDataManagement;
 use WPDesk\WC\Helper\Product\ProductCompatible;
