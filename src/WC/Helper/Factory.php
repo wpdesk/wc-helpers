@@ -3,7 +3,7 @@
 namespace WPDesk\WC\Helper\Product\Compatible;
 
 use WPDesk\WC\Helper\Compatibility\HelperFactory;
-use WPDesk\WC\Helper\Compatibility\HelperFactoryLastest;
+use WPDesk\WC\Helper\Compatibility\HelperFactoryLegacyV33;
 use WPDesk\WC\Helper\Compatibility\HelperFactoryLegacyV27;
 
 class Factory
@@ -18,7 +18,7 @@ class Factory
         if (version_compare($version, '2.7', '<')) {
             return new HelperFactoryLegacyV27();
         } else {
-            return new HelperFactoryLastest();
+            return new HelperFactoryLegacyV33();
         }
     }
 }
