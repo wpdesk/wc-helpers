@@ -22,6 +22,8 @@ class testOrderCompatibility extends WP_UnitTestCase
 
     public function setUp()
     {
+    	$date_paid = new \WC_DateTime('2017-01-01');
+	    $date_completed = new \WC_DateTime('2017-01-02');
         $whatever         = 1;
         $this->testValues = [
             'billing_first_name'   => $whatever++,
@@ -33,7 +35,7 @@ class testOrderCompatibility extends WP_UnitTestCase
             'billing_state'        => $whatever++,
             'billing_postcode'     => $whatever++,
             'billing_country'      => $whatever++,
-            'billing_email'        => 'some@address.email',
+            'billing_email'        => 'some@address.com',
             'billing_phone'        => $whatever++,
             'shipping_first_name'  => $whatever++,
             'shipping_last_name'   => $whatever++,
@@ -51,12 +53,12 @@ class testOrderCompatibility extends WP_UnitTestCase
             'customer_user_agent'  => $whatever++,
             'created_via'          => $whatever++,
             'customer_note'        => $whatever++,
-//            'date_completed' => new \WC_DateTime('2017-01-01'),
-//            'date_paid' => new \WC_DateTime('2017-01-02'),
+            'date_completed'       => $date_completed,
+            'date_paid'            => $date_paid,
             'cart_hash'            => $whatever++,
             'order_key'            => $whatever++,
             'customer_id'          => $whatever,
-            'status'               => 'completed'
+            'status'               => 'processing'
         ];
 
         $this->order = $order = WC_Helper_Order::create_order(1);
@@ -108,6 +110,7 @@ class testOrderCompatibility extends WP_UnitTestCase
 
         foreach ($testValues as $key => $value) {
             $getterMethod = 'get_' . $key;
+            $valueFromOrder = $order->{$getterMethod}();
             $this->assertEquals($value, $order->{$getterMethod}(), "Invalid get value for {$getterMethod}");
         }
     }
