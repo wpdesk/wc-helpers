@@ -107,11 +107,10 @@ class testOrderCompatibility extends WP_UnitTestCase
      */
     private function assert_all_getters(OrderCompatible $order, $testValues)
     {
-
         foreach ($testValues as $key => $value) {
             $getterMethod = 'get_' . $key;
             $valueFromOrder = $order->{$getterMethod}();
-            $this->assertEquals($value, $order->{$getterMethod}(), "Invalid get value for {$getterMethod}");
+            $this->assertEquals($value, $valueFromOrder, "Invalid get value for {$getterMethod}");
         }
     }
 }
